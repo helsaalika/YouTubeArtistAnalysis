@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Flask App</title>
+  </head>
+  <body>
+    <h1>Data Artist</h1>
+
+    {% if data_artist %}
+    <ul>
+      {% for artist in data_artist %}
+      <li>
+        <strong>Channel Name:</strong> {{ artist.Channel_name }} <br />
+        <strong>Subscriber:</strong> {{ artist.Subscriber }} <br />
+        <strong>Views:</strong> {{ artist.Views }} <br />
+        <strong>Total Videos:</strong> {{ artist.Total_videos }} <br />
+
+        <strong>Videos:</strong>
+        <ul>
+          {% for video in artist.Videos %}
+          <li>{{ video }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No artist data available.</p>
+    {% endif %}
+
+    <h1>Data Video</h1>
+
+    {% if data_video %}
+    <ul>
+      {% for video in data_video %}
+      <li>
+        <strong>Video ID:</strong> {{ video['Video ID'] }} <br />
+        <strong>Title:</strong> {{ video['Title'] }} <br />
+        <strong>Description:</strong> {{ video['Description'] }} <br />
+        <strong>Views:</strong> {{ video['Views'] }} <br />
+        <strong>Likes:</strong> {{ video['Likes'] }} <br />
+        <strong>Comments:</strong> {{ video['Comments'] }} <br />
+        <strong>Upload Date:</strong> {{ video['Upload Date'] }} <br />
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No video data available.</p>
+    {% endif %}
+  </body>
+</html>
